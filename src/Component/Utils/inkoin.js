@@ -1,10 +1,5 @@
-export const balanceContractAddress = "0x55d398326f99059fF775485246999027B3197955"
-export const balanceContractAbi = [{
-    "inputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "constructor"
-}, {
+export const inkoinAddress = "0xb19763355A4C5dC8d38481605C1cE4E302913CDD";
+export const inkoinAbi = [{
     "anonymous": false,
     "inputs": [{
         "indexed": true,
@@ -27,12 +22,27 @@ export const balanceContractAbi = [{
 }, {
     "anonymous": false,
     "inputs": [{
-        "indexed": true,
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "total",
+        "type": "uint256"
+    }, {
+        "indexed": false,
+        "internalType": "address",
+        "name": "tokenAddress",
+        "type": "address"
+    }],
+    "name": "Multisended",
+    "type": "event"
+}, {
+    "anonymous": false,
+    "inputs": [{
+        "indexed": false,
         "internalType": "address",
         "name": "previousOwner",
         "type": "address"
     }, {
-        "indexed": true,
+        "indexed": false,
         "internalType": "address",
         "name": "newOwner",
         "type": "address"
@@ -60,43 +70,6 @@ export const balanceContractAbi = [{
     "name": "Transfer",
     "type": "event"
 }, {
-    "constant": true,
-    "inputs": [],
-    "name": "_decimals",
-    "outputs": [{
-        "internalType": "uint8",
-        "name": "",
-        "type": "uint8"
-    }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": true,
-    "inputs": [],
-    "name": "_name",
-    "outputs": [{
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-    }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": true,
-    "inputs": [],
-    "name": "_symbol",
-    "outputs": [{
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-    }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": true,
     "inputs": [{
         "internalType": "address",
         "name": "owner",
@@ -112,18 +85,16 @@ export const balanceContractAbi = [{
         "name": "",
         "type": "uint256"
     }],
-    "payable": false,
     "stateMutability": "view",
     "type": "function"
 }, {
-    "constant": false,
     "inputs": [{
         "internalType": "address",
         "name": "spender",
         "type": "address"
     }, {
         "internalType": "uint256",
-        "name": "amount",
+        "name": "value",
         "type": "uint256"
     }],
     "name": "approve",
@@ -132,14 +103,12 @@ export const balanceContractAbi = [{
         "name": "",
         "type": "bool"
     }],
-    "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
 }, {
-    "constant": true,
     "inputs": [{
         "internalType": "address",
-        "name": "account",
+        "name": "owner",
         "type": "address"
     }],
     "name": "balanceOf",
@@ -148,27 +117,39 @@ export const balanceContractAbi = [{
         "name": "",
         "type": "uint256"
     }],
-    "payable": false,
     "stateMutability": "view",
     "type": "function"
 }, {
-    "constant": false,
     "inputs": [{
         "internalType": "uint256",
-        "name": "amount",
+        "name": "value",
         "type": "uint256"
     }],
     "name": "burn",
-    "outputs": [{
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-    }],
-    "payable": false,
+    "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
 }, {
-    "constant": true,
+    "inputs": [{
+        "internalType": "address",
+        "name": "from",
+        "type": "address"
+    }, {
+        "internalType": "uint256",
+        "name": "value",
+        "type": "uint256"
+    }],
+    "name": "burnFrom",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+}, {
+    "inputs": [],
+    "name": "buy",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+}, {
     "inputs": [],
     "name": "decimals",
     "outputs": [{
@@ -176,11 +157,9 @@ export const balanceContractAbi = [{
         "name": "",
         "type": "uint8"
     }],
-    "payable": false,
     "stateMutability": "view",
     "type": "function"
 }, {
-    "constant": false,
     "inputs": [{
         "internalType": "address",
         "name": "spender",
@@ -196,23 +175,19 @@ export const balanceContractAbi = [{
         "name": "",
         "type": "bool"
     }],
-    "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
 }, {
-    "constant": true,
-    "inputs": [],
-    "name": "getOwner",
-    "outputs": [{
-        "internalType": "address",
-        "name": "",
-        "type": "address"
+    "inputs": [{
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
     }],
-    "payable": false,
-    "stateMutability": "view",
+    "name": "getTokens",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
 }, {
-    "constant": false,
     "inputs": [{
         "internalType": "address",
         "name": "spender",
@@ -228,27 +203,23 @@ export const balanceContractAbi = [{
         "name": "",
         "type": "bool"
     }],
-    "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
 }, {
-    "constant": false,
     "inputs": [{
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
+        "internalType": "address[]",
+        "name": "_contributors",
+        "type": "address[]"
+    }, {
+        "internalType": "uint256[]",
+        "name": "_balances",
+        "type": "uint256[]"
     }],
-    "name": "mint",
-    "outputs": [{
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-    }],
-    "payable": false,
+    "name": "multisendToken",
+    "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
 }, {
-    "constant": true,
     "inputs": [],
     "name": "name",
     "outputs": [{
@@ -256,11 +227,9 @@ export const balanceContractAbi = [{
         "name": "",
         "type": "string"
     }],
-    "payable": false,
     "stateMutability": "view",
     "type": "function"
 }, {
-    "constant": true,
     "inputs": [],
     "name": "owner",
     "outputs": [{
@@ -268,19 +237,47 @@ export const balanceContractAbi = [{
         "name": "",
         "type": "address"
     }],
-    "payable": false,
     "stateMutability": "view",
     "type": "function"
 }, {
-    "constant": false,
-    "inputs": [],
-    "name": "renounceOwnership",
+    "inputs": [{
+        "internalType": "address",
+        "name": "_address",
+        "type": "address"
+    }],
+    "name": "register",
+    "outputs": [{
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+    }],
+    "stateMutability": "pure",
+    "type": "function"
+}, {
+    "inputs": [{
+        "internalType": "uint256",
+        "name": "_token",
+        "type": "uint256"
+    }],
+    "name": "sell",
     "outputs": [],
-    "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
 }, {
-    "constant": true,
+    "inputs": [{
+        "internalType": "address payable[]",
+        "name": "_contributors",
+        "type": "address[]"
+    }, {
+        "internalType": "uint256[]",
+        "name": "_balances",
+        "type": "uint256[]"
+    }],
+    "name": "sendMultiBnb",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+}, {
     "inputs": [],
     "name": "symbol",
     "outputs": [{
@@ -288,11 +285,9 @@ export const balanceContractAbi = [{
         "name": "",
         "type": "string"
     }],
-    "payable": false,
     "stateMutability": "view",
     "type": "function"
 }, {
-    "constant": true,
     "inputs": [],
     "name": "totalSupply",
     "outputs": [{
@@ -300,18 +295,16 @@ export const balanceContractAbi = [{
         "name": "",
         "type": "uint256"
     }],
-    "payable": false,
     "stateMutability": "view",
     "type": "function"
 }, {
-    "constant": false,
     "inputs": [{
         "internalType": "address",
-        "name": "recipient",
+        "name": "to",
         "type": "address"
     }, {
         "internalType": "uint256",
-        "name": "amount",
+        "name": "value",
         "type": "uint256"
     }],
     "name": "transfer",
@@ -320,22 +313,20 @@ export const balanceContractAbi = [{
         "name": "",
         "type": "bool"
     }],
-    "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
 }, {
-    "constant": false,
     "inputs": [{
         "internalType": "address",
-        "name": "sender",
+        "name": "from",
         "type": "address"
     }, {
         "internalType": "address",
-        "name": "recipient",
+        "name": "to",
         "type": "address"
     }, {
         "internalType": "uint256",
-        "name": "amount",
+        "name": "value",
         "type": "uint256"
     }],
     "name": "transferFrom",
@@ -344,11 +335,9 @@ export const balanceContractAbi = [{
         "name": "",
         "type": "bool"
     }],
-    "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
 }, {
-    "constant": false,
     "inputs": [{
         "internalType": "address",
         "name": "newOwner",
@@ -356,7 +345,16 @@ export const balanceContractAbi = [{
     }],
     "name": "transferOwnership",
     "outputs": [],
-    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+}, {
+    "inputs": [{
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
+    }],
+    "name": "withDraw",
+    "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
 }]

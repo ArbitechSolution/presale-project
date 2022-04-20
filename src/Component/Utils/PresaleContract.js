@@ -1,4 +1,4 @@
-export const presaleContractAddress = "0x700b1dB382E713B8966D10A9bc32F4a59BF6078b";
+export const presaleContractAddress = "0x4F66E8Ed632c7ab1D2F92f7c68ba2d6dDD23a152";
 export const presaleContractAbi = [{
     "inputs": [{
         "internalType": "contract IBEP20",
@@ -55,6 +55,16 @@ export const presaleContractAbi = [{
         "type": "address"
     }],
     "stateMutability": "view",
+    "type": "function"
+}, {
+    "inputs": [{
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
+    }],
+    "name": "USDTwithdraw",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
 }, {
     "inputs": [],
@@ -211,15 +221,5 @@ export const presaleContractAbi = [{
         "type": "address"
     }],
     "stateMutability": "view",
-    "type": "function"
-}, {
-    "inputs": [{
-        "internalType": "uint256",
-        "name": "_amount",
-        "type": "uint256"
-    }],
-    "name": "withdraw",
-    "outputs": [],
-    "stateMutability": "nonpayable",
     "type": "function"
 }]
