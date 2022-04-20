@@ -62,6 +62,15 @@ function Presale() {
             let totalSold = await preSaleContractOf.methods.totalSold().call();
             totalSold = webSupply.utils.fromWei(totalSold);
             setProgress(totalSold / supply);
+            let priceValue = await preSaleContractOf.methods.price().call();
+                priceValue = webSupply.utils.fromWei(priceValue)
+                setPreice(priceValue)
+                let minpice = await preSaleContractOf.methods.minimum().call();
+                minpice = webSupply.utils.fromWei(minpice)
+                setMinimumPrice(minpice);
+                let maxprice = await preSaleContractOf.methods.maximum().call();
+                maxprice = webSupply.utils.fromWei(maxprice)
+                setMaximumPrice(maxprice)
         }catch(e){
             console.log("error while get value without metamask", e);
         }
@@ -74,27 +83,12 @@ function Presale() {
 
             }
             else if (acc == "Wrong Network") {
-
-            } else if (acc == "Connect Wallet") {
-                console.log("Connect Wallet");
-
-            }
-            else if (acc == "Connect") {
-
-            }
-            else {
+                console.log("wrong network");
+            }else {
                 const web3 = window.web3;
                 let preSaleContractOf = new web3.eth.Contract(presaleContractAbi, presaleContractAddress);
                 const usdtContract = new web3.eth.Contract(usdtAbi, usdtAddress);
-                let priceValue = await preSaleContractOf.methods.price().call();
-                priceValue = webSupply.utils.fromWei(priceValue)
-                setPreice(priceValue)
-                let minpice = await preSaleContractOf.methods.minimum().call();
-                minpice = webSupply.utils.fromWei(minpice)
-                setMinimumPrice(minpice);
-                let maxprice = await preSaleContractOf.methods.maximum().call();
-                maxprice = webSupply.utils.fromWei(maxprice)
-                setMaximumPrice(maxprice)
+                
 
                 let bal = await usdtContract.methods.balanceOf(acc).call();
                 bal = web3.utils.fromWei(bal)
